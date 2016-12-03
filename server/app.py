@@ -18,15 +18,20 @@ def debug():
 
 @app.route("/status")
 def status():
+    global pixels
     global current_player
 
-    change = str(request.args["change"])
+    change = ""
 
-    if change == "player":
+    if request.args["change"] == "player":
         if current_player == "x":
             current_player = "o"
         else:
             current_player = "x"
+        change = current_player
+    else:
+        pixels = [" " for i in range(9)]
+        change = "".join(pixels)
 
     def notify():
         msg = change
