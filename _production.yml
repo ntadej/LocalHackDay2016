@@ -1,0 +1,3 @@
+# Build settings
+production: true
+incremental: false

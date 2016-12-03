@@ -1,0 +1,26 @@
+.target
+  width: 518px
+  margin: 0 auto
+
+  +mobile
+    width: 253px
+
+
+  .columns:not(.is-desktop)
+    display: flex
+
+  .pixel
+    opacity: 0.75
+    height: 164px
+    width: 164px
+    margin: 8px
+    border-radius: 20px
+    background-color: $pixel-blue
+
+    +mobile
+      width: 80px
+      height: 80px
+      margin: 4px
+
+  .pixel-5
+    background-color: $pixel-red

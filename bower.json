@@ -1,0 +1,21 @@
+{
+  "name": "LocalHackDay2016",
+  "homepage": "https://github.com/ntadej/LocalHackDay2016",
+  "authors": [
+    "Tadej Novak <tadej@tano.si>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bulma": "^0.2.3"
+  }
+}
