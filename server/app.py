@@ -9,7 +9,7 @@ from crossdomain import crossdomain
 app = Flask(__name__)
 subscriptions = []
 
-pixels = "         "
+pixels = [" " for i in range(9)]
 current_player = "x"
 
 @app.route("/debug")
@@ -41,12 +41,12 @@ def status():
 def target():
     change = str(request.args["pixels"])
 
-    for i in range(len(change)):
-        if pixels[i] == " " and change[i] == "1":
+    for i in range(len(pixels)):
+        if pixels[i] == " " and change[i] == "0":
             pixels[i] = current_player
 
     def notify():
-        msg = pixels
+        msg = "".join(pixels)
         for sub in subscriptions[:]:
             sub.put(msg)
 
