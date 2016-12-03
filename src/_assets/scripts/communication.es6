@@ -1,11 +1,15 @@
 const Communicaton = {
   init: () => {
-    var eventOutputContainer = document.getElementById("event");
-    var evtSrc = new EventSource("http://127.0.0.1:5000/subscribe");
+    const evtSrc = new EventSource("http://stark.pyphy.com/server/subscribe");
 
-    evtSrc.onmessage = function(e) {
+    evtSrc.onmessage = (e) => {
         console.log(e.data);
-        eventOutputContainer.innerHTML = e.data;
+
+        if (e.data == "x" || e.data == "o") {
+          TicTacToe.changePlayer(e.data);
+        } else {
+          TicTacToe.update(e.data);
+        }
     };
   }
-}
+};

@@ -1,0 +1,29 @@
+.cross
+  position: absolute
+  right: 20px
+  top: 20px
+  height: 124px
+  width: 124px
+
+  &:before, &:after
+    position: absolute
+    left: 59px
+    content: " "
+    height: 122px
+    width: 8px
+    background-color: #fff
+
+  &:before
+    transform: rotate(45deg)
+
+  &:after
+    transform: rotate(-45deg)
+
+.circle
+  position: absolute
+  right: 30px
+  top: 30px
+  border-radius: 62px
+  height: 104px
+  width: 104px
+  border: 8px solid #fff
