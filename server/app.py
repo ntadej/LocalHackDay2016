@@ -62,9 +62,15 @@ def target():
 @app.route("/subscribe")
 @crossdomain(origin='*')
 def subscribe():
+    def notify():
+        msg = str(len(subscriptions))
+        for sub in subscriptions[:]:
+            sub.put(msg)
+
     def gen():
         q = Queue()
         subscriptions.append(q)
+        spawn(notify)
         try:
             while True:
                 result = q.get()
@@ -72,5 +78,6 @@ def subscribe():
                 yield ev.encode()
         except GeneratorExit: # Or maybe use flask signals
             subscriptions.remove(q)
+            spawn(notify)
 
     return Response(gen(), mimetype="text/event-stream")
