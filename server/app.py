@@ -32,7 +32,7 @@ def status():
     else:
         current_player = "x"
         pixels = [" " for i in range(9)]
-        change = "".join(pixels)
+        change = "reset"
 
     def notify():
         msg = change
