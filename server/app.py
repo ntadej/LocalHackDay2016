@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, request, Response
 from gevent import spawn
 from gevent.queue import Queue
 
@@ -6,52 +6,28 @@ from sse import ServerSentEvent
 
 import time
 
+from crossdomain import crossdomain
+
 app = Flask(__name__)
 subscriptions = []
-
-# Client code consumes like this.
-@app.route("/")
-def index():
-    debug_template = """
-     <html>
-       <head>
-       </head>
-       <body>
-         <h1>Server sent events</h1>
-         <div id="event"></div>
-         <script type="text/javascript">
-
-         var eventOutputContainer = document.getElementById("event");
-         var evtSrc = new EventSource("/subscribe");
-
-         evtSrc.onmessage = function(e) {
-             console.log(e.data);
-             eventOutputContainer.innerHTML = e.data;
-         };
-
-         </script>
-       </body>
-     </html>
-    """
-    return(debug_template)
 
 @app.route("/debug")
 def debug():
     return "Currently %d subscriptions" % len(subscriptions)
 
-@app.route("/publish")
-def publish():
-    #Dummy data - pick up from request for real data
+@app.route("/target")
+def target():
     def notify():
-        msg = str(time.time())
+        msg = str(request.args["pixels"])
         for sub in subscriptions[:]:
             sub.put(msg)
 
     spawn(notify)
 
-    return "OK"
+    return str(request.args["pixels"])
 
 @app.route("/subscribe")
+@crossdomain(origin='*')
 def subscribe():
     def gen():
         q = Queue()
