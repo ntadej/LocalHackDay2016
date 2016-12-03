@@ -4,7 +4,8 @@
 
 .hero-body,
 .hero-foot
-  width: 65%
+  +tablet
+    width: 65%
 
 .title
   font-weight: bold
@@ -16,6 +17,14 @@
   +tablet
     font-size: 32px
 
-.spectators
+.spectators,
+.spectators-url
   +tablet
     font-size: 20px
+
+.spectators-url
+  strong
+    color: #fff
+
+  +mobile
+    display: none
