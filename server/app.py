@@ -4,8 +4,6 @@ from gevent.queue import Queue
 
 from sse import ServerSentEvent
 
-import time
-
 from crossdomain import crossdomain
 
 app = Flask(__name__)
@@ -17,8 +15,9 @@ def debug():
 
 @app.route("/target")
 def target():
+    pixels = str(request.args["pixels"])
     def notify():
-        msg = str(request.args["pixels"])
+        msg = pixels
         for sub in subscriptions[:]:
             sub.put(msg)
 
