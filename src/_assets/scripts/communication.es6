@@ -5,7 +5,9 @@ const Communicaton = {
     evtSrc.onmessage = (e) => {
         console.log(e.data);
 
-        if (e.data == "x" || e.data == "o") {
+        if (e.data != "         " && !isNaN(e.data)) {
+          TicTacToe.changeSpectators(e.data);
+        } else if (e.data == "x" || e.data == "o") {
           TicTacToe.changePlayer(e.data);
         } else {
           TicTacToe.update(e.data);

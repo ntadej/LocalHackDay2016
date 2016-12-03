@@ -5,6 +5,13 @@
   height: 124px
   width: 124px
 
+  +mobile
+    right: 10px
+    top: 10px
+    height: 60px
+    width: 60px
+
+
   &:before, &:after
     position: absolute
     left: 59px
@@ -12,6 +19,10 @@
     height: 122px
     width: 8px
     background-color: #fff
+
+    +mobile
+      left: 25px
+      height: 58px
 
   &:before
     transform: rotate(45deg)
@@ -27,3 +38,9 @@
   height: 104px
   width: 104px
   border: 8px solid #fff
+
+  +mobile
+    right: 15px
+    top: 15px
+    height: 50px
+    width: 50px

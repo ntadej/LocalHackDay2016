@@ -18,10 +18,37 @@
     border-radius: 20px
     background-color: $pixel-blue
 
+    &.winner
+      animation: pixel-anim 1s infinite
+
     +mobile
       width: 80px
       height: 80px
       margin: 4px
+      border-radius: 10px
 
   .pixel-5
+    background-color: $pixel-red
+
+    &.winner
+      animation: pixel-anim-5 1s infinite
+
+@keyframes pixel-anim
+  0%
+    background-color: $pixel-blue
+
+  50%
+    background-color: $pixel-green
+
+  100%
+    background-color: $pixel-blue
+
+@keyframes pixel-anim-5
+  0%
+    background-color: $pixel-red
+
+  50%
+    background-color: $pixel-gold
+
+  100%
     background-color: $pixel-red

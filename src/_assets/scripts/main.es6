@@ -3,4 +3,5 @@
 
 $(document).ready(() => {
   Communicaton.init();
+  TicTacToe.changePlayer(TicTacToe.currentPlayer);
 })
