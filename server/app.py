@@ -30,6 +30,7 @@ def status():
             current_player = "x"
         change = current_player
     else:
+        current_player = "x"
         pixels = [" " for i in range(9)]
         change = "".join(pixels)
 

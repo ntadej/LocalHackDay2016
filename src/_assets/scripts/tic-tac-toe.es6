@@ -18,9 +18,10 @@ const TicTacToe = {
   },
 
   update: (pixels) => {
-    console.log(pixels.indexOf('x'), pixels.indexOf('o'))
-    if (pixels.indexOf('x') == -1 && pixels.indexOf('o') == -1)
-      TicTacToe.winner = false
+    if (pixels.indexOf('x') == -1 && pixels.indexOf('o') == -1) {
+      TicTacToe.winner = false;
+      TicTacToe.changePlayer('x');
+    }
 
     if (TicTacToe.winner)
       return
